@@ -1,0 +1,14 @@
+name: btv
+channels:
+  - conda-forge
+dependencies:
+  - pip
+  - python=3.8
+  - gfal2-util
+  - numpy
+  - pip:
+    - law
+    - order
+    - coffea[dask]
+    - git+https://github.com/dask/dask-jobqueue.git#egg=dask-jobqueue
+    - tornado>=6
