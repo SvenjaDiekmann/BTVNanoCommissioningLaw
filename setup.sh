@@ -10,6 +10,7 @@ action() {
     export BTV_BASE="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && /bin/pwd )"
     # check where we are
     case "$( hostname -f )" in
+        # Vispa
         vispa-*|vispa-*.physik.rwth-aachen.de)
         mkdir -p "$HOME/.config/dask"
         [ -e "$HOME/.config/dask/vispa.yml" ] || ln -s "$BTV_BASE/dask.yml" "$HOME/.config/dask/vispa.yml"
@@ -19,6 +20,12 @@ action() {
         export DASGOCLIENT="$(ls -1t /cvmfs/cms.cern.ch/cc?_amd64_*/cms/dasgoclient/*/bin/dasgoclient  | head -n 1)"
         software conda
         ulimit -f hard
+        ;;
+        # RWTH
+        lx3a*.physik.rwth-aachen.de)
+        echo "running on: $HOSTNAME"
+        export BTV_DATA="/net/scratch_cms3a/$USER/btv"
+        export DASGOCLIENT="$(ls -1t /cvmfs/cms.cern.ch/cc?_amd64_*/cms/dasgoclient/*/bin/dasgoclient  | head -n 1)"
         ;;
     esac
     # complain when required variables are not set
