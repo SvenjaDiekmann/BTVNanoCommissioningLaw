@@ -9,6 +9,10 @@ dependencies:
   - pip:
     - law
     - order
-    - coffea[dask]
+    - uproot
+    - uproot3
+    - awkward
+    - coffea
+    - dask==2.21.0
     - git+https://github.com/dask/dask-jobqueue.git#egg=dask-jobqueue
-    - tornado>=6
+    - git+https://github.com/tornadoweb/tornado.git#egg=tornado
